@@ -1,0 +1,12 @@
+	class Solution {
+    public int change(int amount, int[] coins) {
+        int combination[] = new int[amount+1];
+        combination[0]=1;
+        for(int coin:coins){
+            for(int i=coin;i<=amount;i++){
+                    combination[i]+=combination[i-coin];
+            }
+        }
+        return combination[amount];
+    }
+}
