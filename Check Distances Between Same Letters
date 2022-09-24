@@ -1,0 +1,16 @@
+class Solution {
+    public boolean checkDistances(String s, int[] distance) {
+        int x=0;
+        for(char ch = 'a';ch<='z';ch++){
+            int d = s.indexOf(ch);
+            if(d!=-1){
+                int dis = s.lastIndexOf(ch) - s.indexOf(ch) -1;
+                if(dis!=distance[x]){
+                    return false;
+                }
+            }
+            x++;
+        }
+        return true;
+    }
+}
