@@ -1,0 +1,16 @@
+	class Solution {
+    private void swap(char[] arr,int a,int b){
+        char temp=arr[a];
+        arr[a]=arr[b];
+        arr[b]=temp;
+    }
+    public void reverseString(char[] s) {
+        int low=0;
+        int high=s.length-1;
+        while(low<=high){
+            swap(s,low++,high--);
+            // low++;
+            // high--;
+        }
+    }
+}
