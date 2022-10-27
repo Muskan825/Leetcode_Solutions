@@ -1,0 +1,45 @@
+Recursive Solution :-
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        dfs(root,list);
+        return list;
+    }
+    private void dfs(TreeNode root,List<Integer> list){
+        if(root==null)
+            return;
+        dfs(root.left,list);
+        list.add(root.val);
+        dfs(root.right,list);
+    }
+}
+
+
+
+Iterative Solution :-
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        dfs(root,list);
+        return list;
+    }
+    private void dfs(TreeNode root,List<Integer> list){
+        if(root==null)
+            return;
+        Stack<TreeNode> helper = new Stack<>();
+        TreeNode temp = root;
+        while(!helper.isEmpty() || temp!=null){
+            if(temp!=null){
+                helper.push(temp);
+                temp = temp.left;
+            }
+            else{
+                temp = helper.pop();
+                list.add(temp.val);
+                temp = temp.right;
+            }
+        }
+     }
+}
