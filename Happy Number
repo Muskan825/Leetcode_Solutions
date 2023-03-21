@@ -1,20 +1,64 @@
 class Solution {
     public boolean isHappy(int n) {
-        List<Integer> li = new ArrayList<>();
-        
+        List<Integer> se = new ArrayList<>();
         while(n!=1){
             int temp = n;
-            n =0;
+            n = 0;
             while(temp>0){
                 n = n+(int)Math.pow((temp%10),2);
                 temp = temp/10;
             }
-            if(li.contains(n))
+            if(se.contains(n)){
                 return false;
+            }
             else{
-                li.add(n);
+                se.add(n);
             }
         }
         return true;
     }
 }
+/*
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer> se = new HashSet<>();
+        while(n!=1){
+            int temp = n;
+            n = 0;
+            while(temp>0){
+                n = n+(int)Math.pow((temp%10),2);
+                temp = temp/10;
+            }
+            if(se.contains(n)){
+                return false;
+            }
+            else{
+                se.add(n);
+            }
+        }
+        return true;
+    }
+}
+*/
+/*
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet<Integer> se = new HashSet<>();
+        while(n!=1){
+            int temp = n;
+            n = 0;
+            while(temp>0){
+                n = n+(int)Math.pow((temp%10),2);
+                temp = temp/10;
+            }
+            if(se.contains(n)){
+                return false;
+            }
+            else{
+                se.add(n);
+            }
+        }
+        return true;
+    }
+}
+*/
