@@ -1,0 +1,49 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int arr[][] = new int[n][n];
+        if(n==0){
+            return arr;
+        }
+        int rows = arr.length;
+        int cols = arr[0].length;
+        int dir = 1;
+        int point =1;
+        int top = 0, bottom = rows - 1, left = 0, right = cols - 1;
+        
+        while (top <= bottom && left <= right) {
+            if (dir == 1) {                         // moving left   ->  right
+                for (int i = left; i <= right; ++i) {
+                    arr[top][i]=point;
+                    ++point;
+                }
+                ++top;
+                dir = 2;
+            } 
+            else if (dir == 2) {                    // moving top   ->  bottom
+                for (int i = top; i <= bottom; ++i) {
+                   arr[i][right]= point;
+                    point++;
+                }
+                --right;
+                dir = 3;
+            } 
+            else if (dir == 3) {                    // moving right    ->     left
+                for (int i = right; i >= left; --i) {
+                    arr[bottom][i]=point;
+                    point++;
+                }
+                --bottom;
+                dir = 4;
+            } 
+            else if (dir == 4) {                    // moving bottom    ->      up
+                for (int i = bottom; i >= top; --i) {
+                    arr[i][left]=point;
+                    point++;
+                }
+                ++left;
+                dir = 1;
+            }
+        }
+        return arr;
+    }
+}
