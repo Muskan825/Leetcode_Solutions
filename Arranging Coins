@@ -1,0 +1,50 @@
+// Brute Force
+
+class Solution {
+    public int arrangeCoins(int n) {
+        int ans = 0;
+        if(n==0){
+            return 0;
+        }
+        
+        for(int i=1;i<=n;i++){
+           if(n>=i){
+               n = n-i;
+               ans += 1;
+           }
+        }
+        
+        return ans;
+    }
+}
+
+
+// Better With Binary Search
+
+class Solution {
+    public int arrangeCoins(int n) {
+        long left = 0;
+        int right = n;
+        while(left<=right){
+            long mid = left+(right-left)/2;
+            long k = mid*(mid+1)/2;
+            if(k==n){
+                return (int)mid;
+            }else if(k>n){
+                right = (int)mid-1;
+            }else{
+                left = (int)mid+1;
+            }
+        }
+        return (int)right;
+    }
+}
+
+
+//  Best
+
+class Solution {
+    public int arrangeCoins(int n) {
+        return (int)(Math.sqrt(2*(long)n+0.25)-0.5);
+    }
+}
