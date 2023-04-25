@@ -1,0 +1,18 @@
+class SmallestInfiniteSet {
+
+public void addBack(int num) {
+    if (num < curr)
+      added.add(num);
+  }
+  
+  public int popSmallest() {
+    if (added.isEmpty())
+      return curr++;
+    final int min = added.first();
+    added.remove(min);
+    return min;
+  }
+  
+  private int curr = 1;
+  private TreeSet<Integer> added = new TreeSet<>();
+}
